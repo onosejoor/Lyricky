@@ -247,6 +247,14 @@ html {
     background-color: #000;
   }
 
+  .accessDenied > h1{
+    color: white;
+  }
+
+  #footer{
+    background-color: rgb(var(--black), 0.85);
+  }
+
   @media (max-width:800px) {
     .nav-items{
       background-color: rgb(var(--purple), 0.5);
@@ -293,10 +301,16 @@ section {
 }
 
 .container {
-  display: grid;
-  grid-template-rows: auto 1fr auto;
+  /* display: grid;
+  grid-template-rows: auto 1fr auto; */
+  display: flex;
+  flex-direction: column;
   min-height: 100vh;
   margin: auto;
+
+  main{
+    flex: 1;
+  }
 }
 
 body {
@@ -480,6 +494,10 @@ li {
   display: flex;
   gap: 30px;
   justify-content: center;
+
+  a>button{
+    padding: 20px 10px;
+  }
 }
 .buttonCon > a:nth-child(2) > .headerBtn {
   background-color: white !important;
@@ -1316,6 +1334,16 @@ div.regLogInput > input:focus {
 }
 
 @media (max-width: 350px) {
+  .buttonCon{
+    flex-direction: column;
+    align-items: center;
+  }
+  .heroContainer{
+    width: 100%;
+  }
+  .formWrapper{
+    padding: 10px;
+  }
   .routeForm {
     align-items: center;
     padding: 1em 0;

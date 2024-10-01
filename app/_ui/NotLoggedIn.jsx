@@ -10,10 +10,6 @@ const NotLoggedIn = () => {
         <div className="accessDenied">
           <h1>Oops!</h1>
           <h3>You Have To be logged in to see this content.</h3>
-          <p>
-            Oops, looks like the lyrics got lost in translation, go back home to
-            see your lyrics.
-          </p>
           <div className="deniedBtnCon">
             {" "}
             <Button
