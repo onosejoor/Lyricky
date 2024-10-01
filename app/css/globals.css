@@ -1052,8 +1052,8 @@ div.regLogInput > input:focus {
 #footer {
   background-color: rgb(var(--opacityPurple), 0.1);
   border-top: 1px solid rgb(var(--purple));
+  padding: 1em 0;
   margin: 0;
-  padding: 0;
 }
 .footerContainer > .logoContainer {
   gap: 10px;
