@@ -265,8 +265,7 @@ html {
   }
 }
 
-.overlay,
-.overlay2 {
+.overlay {
   position: fixed;
   height: 100%;
   width: 100%;
@@ -274,10 +273,6 @@ html {
   background-color: rgb(0, 0, 0, 0.5);
   display: none;
   cursor: url(/images/svg/x.svg), auto;
-}
-.shut {
-  bottom: 0;
-  display: block;
 }
 
 section {
@@ -517,7 +512,7 @@ a:nth-child(2) > .headerBtn:hover {
 @keyframes load {
   0% {
     /* background-color: rgb(212, 212, 212); */
-    background-color: blue;
+    background-color: rgb(232, 232, 232);
   }
   100% {
     background-color: white;
@@ -596,14 +591,16 @@ a:nth-child(2) > .headerBtn:hover {
 /* Lyric Form */
 
 .formCon {
-  width: 90%;
+  /* display: flex;
+  flex-direction: column;
+  width: fit-content; */
   margin: 2em auto;
   margin-bottom: 0;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 10px;
-  border: 1.5px solid purple;
-  border-radius: 10px;
+  border: 1px solid purple;
+  border-radius: 5px;
   overflow: hidden;
   background-color: white;
   height: 350px;
@@ -938,23 +935,17 @@ div.regLogInput > input:focus {
 .overlayContainer {
   transition: 0.2s all ease;
   white-space: break-spaces;
-  border: none;
   border-radius: 0;
   width: 100%;
-  overflow: auto;
-  scrollbar-width: thin;
-  margin: 0;  height: 300px;
+  border-radius: 5px;
 }
 .viewMore {
   white-space: break-spaces;
 }
 .popUpCon {
-  overflow: hidden;
-  position: fixed;
   width: 90%;
   border-radius: 10px;
-  top: 20%;
-  z-index: 1;
+  margin: auto;
 }
 
 .copy {
@@ -1328,9 +1319,6 @@ div.regLogInput > input:focus {
   .startedH1 {
     font-size: xx-large !important;
   }
-.overlayContainer{
-  height: 450px;
-}
 }
 
 @media (max-width: 350px) {

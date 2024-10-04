@@ -63,6 +63,24 @@ export async function selectLyrics(email) {
   }
 }
 
+export async function selectLyricsById(id) {
+  try {
+    const { data, error } = await supabase
+      .from("lyrics")
+      .select("*")
+      .eq("id, $1", [id]);
+
+    if (error) {
+      return { error: error.message };
+    } else {
+      const lyrics = data;
+      return { data: lyrics };
+    }
+  } catch (error) {
+    return { error: error.message };
+  }
+}
+
 
 // insert lyrics into db 
 export async function insertLyrics(email, artist, title, lyrics) {

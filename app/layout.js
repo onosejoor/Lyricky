@@ -5,7 +5,7 @@ import { Toaster } from "react-hot-toast";
 
 export const metadata = {
   title: "Lyricky",
-  description: "Are you humming a tune but can’t quite remember the lyrics? Fear not! Lyricky is your trusty sidekick in the lyrical labyrinth. Whether you’re belting out a power ballad or grooving to an indie track, we’ve got your back.",
+  description: "Are you humming a tune but can’t quite remember the lyrics? Fear not! Lyricky is your trusty sidekick in the lyrical labyrinth. Get the lyrics of your song in a snap!",
 };
 
 export default function RootLayout({ children }) {

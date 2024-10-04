@@ -1,23 +1,17 @@
 "use client";
 
 import { deleteLyrics } from "@/lib/userFunctions";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Loader from "./loader";
 import LoadBtn from "./LoadBtn";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
-import PopUpLyrics from "./PopUpLyrics";
+import Link from "next/link";
 
 export default function RecentCard({ lyrics, artist, title, id }) {
-  const [seeMore, setseeMore] = useState(false);
   const [loading, setLoading] = useState(false);
   const router = useRouter();
 
-  function setSee() {
-    setseeMore((prev) => {
-      return !prev;
-    });
-  }
   async function setLoad(id) {
     setLoading(true);
     await deleteLyrics(id);
@@ -25,40 +19,26 @@ export default function RecentCard({ lyrics, artist, title, id }) {
     toast.success("Deleted Successfully");
     router.refresh();
   }
-  useEffect(() => {
-    const overlay = document.querySelector(".overlay2");
-    if (seeMore) {
-      overlay.classList.add("shut");
-    } else {
-      overlay.classList.remove("shut");
-    }
-  }, [seeMore]);
+   const encode = btoa(id)
 
   return (
     <>
-      <div className="overlay2" onClick={setSee}></div>
-
-      {seeMore && (
-        <PopUpLyrics
-          title={title}
-          artist={artist}
-          lyrics={lyrics}
-          action={setSee}
-        />
-      )}
-
       <div className="recentCardContainer">
         <div className="copyCon">
           <LoadBtn className={"copy"} text={lyrics} />
 
           <h1 className="recentTitle">{title}</h1>
         </div>
+        
 
-        <div className={seeMore ? "recentLyrics viewMore" : "recentLyrics"}>
+        <div className={"recentLyrics"}>
           {lyrics.slice(0, 150) + "..."}
-          <button className="see" onClick={setSee}>
-            {!seeMore ? "  see-more" : null}
-          </button>
+          <Link href={`/details?id=${encode}`} >
+          <button className="see" >
+            {"see-more" }
+          </button> 
+          </Link>
+
         </div>
         <div className="lyricDetail">
           <h5 className="recentArtist">{artist}</h5>

@@ -17,7 +17,6 @@ export async function serve(formData) {
     if (select.error) {
       return { success: false, error: "Error Fetching Lyrics. Try Checking Internet Connection" };
     }
-    const { email } = select.data;
 
     const form = await formData;
     

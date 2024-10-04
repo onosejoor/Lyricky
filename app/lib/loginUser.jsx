@@ -5,16 +5,21 @@ import { selectUser } from "./userFunctions";
 import { createSession } from "./session";
 
 export default async function loginUser(formData) {
+  // Form data
   const email = formData.get("email");
   const password = formData.get("password");
 
   try {
+    // select user from db and check if there's an error
     const checkRegUser = await selectUser(email);
 
     if (checkRegUser.error) {
-      return { success: false, message: "Couldn't Validate User, Check Internet Connection" };
+      return {
+        success: false,
+        message: "Couldn't Validate User, Check Internet Connection",
+      };
     }
-
+// check if user exists
     if (!checkRegUser.data) {
       return {
         success: false,
@@ -22,7 +27,16 @@ export default async function loginUser(formData) {
       };
     } else {
       const dbEmail = checkRegUser.data.password;
+      // if user was registered via google
 
+      if (dbEmail === process.env.GOOGLE_CODE) {
+        return {
+          success: false,
+          message: `${email} is already connected with a Google account, please sign-in with Google`,
+        };
+      }
+
+      // 
       const hash = await bcrypt.compare(password, dbEmail);
       const { username } = checkRegUser.data;
 
@@ -38,8 +52,8 @@ export default async function loginUser(formData) {
       }
     }
   } catch (error) {
-    console.log(error, "keje");
-    
+    // console.log(error, "keje");
+
     return { success: false, message: error.message };
   }
 }

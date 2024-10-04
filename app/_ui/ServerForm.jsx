@@ -20,7 +20,6 @@ export default function ServerComponent() {
     song: "",
   });
   const [error, setError] = useState({
-    artist: "",
     song: "",
   });
 
@@ -81,16 +80,14 @@ export default function ServerComponent() {
   const handleSubmit = (e) => {
     const newError = {};
 
-    const keys = Object.keys(form);
+    const keys = form.song;
 
-    keys.forEach((key) => {
-      if (!form[key].trim()) {
-        e.preventDefault();
-        newError[key] = `${key} required`;
-        setError(newError);
-        setLoading(false);
-      }
-    });
+    if (!keys.trim()) {
+      e.preventDefault();
+      newError.song = "Song Title required";
+      setError(newError);
+      setLoading(false);
+    }
   };
 
   // HTML
@@ -102,19 +99,7 @@ export default function ServerComponent() {
           <form action={set} className="lyricForm">
             <div>
               {" "}
-              <label htmlFor="Name">Artist Name</label>
-              <input
-                style={{ borderColor: error.artist ? "red" : "initial" }}
-                type="text"
-                name="artist"
-                value={form.artist}
-                onChange={formChange}
-              />
-              {error.artist && <h5 className="formError">{error.artist}</h5>}
-            </div>
-            <div>
-              {" "}
-              <label htmlFor="Song">Artist Song</label>
+              <label htmlFor="Song">Song Title</label>
               <input
                 style={{ borderColor: error.song ? "red" : "initial" }}
                 name="song"
@@ -122,6 +107,22 @@ export default function ServerComponent() {
                 onChange={formChange}
               />
               {error.song && <h5 className="formError">{error.song}</h5>}
+            </div>
+            <div>
+              {" "}
+              <label htmlFor="Name">
+                Artist Name{" "}
+                <span style={{ opacity: ".83", fontSize: "smaller" }}>
+                  (optional)
+                </span>
+              </label>
+              <input
+                style={{ borderColor: error.artist ? "red" : "initial" }}
+                type="text"
+                name="artist"
+                value={form.artist}
+                onChange={formChange}
+              />
             </div>
 
             <button

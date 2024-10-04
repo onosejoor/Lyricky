@@ -13,6 +13,7 @@ const Img = ({ src, className, alt }) => {
           className={className}
           alt={alt}
           src={src}
+          style={{display: isLoading? none : null}}
           onError={() => setisLoading(true)}
           width={500}
           height={500}
