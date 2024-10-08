@@ -65,7 +65,7 @@ export async function selectLyrics(email) {
 
 export async function selectLyricsById(id, username) {
   try {
-    const { data: user } = await selectUserName(username);
+    const { data: user } = await selectUser(username);
     const { data, error } = await supabase
       .from("lyrics")
       .select("*")
