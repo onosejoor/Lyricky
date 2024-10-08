@@ -9,7 +9,7 @@ export const verifyUser = async () => {
   
 
   if (session?.username) {
-    return { IsAuth: true, user: session.username };
+    return { IsAuth: true, user: session.email, username: session.username };
   } else {
     return { IsAuth: false, message: "User Not Signed in"};
   }

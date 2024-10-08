@@ -2,7 +2,6 @@ import NavCon from "@/_components/NavCon";
 import User from "@/_components/User";
 import { verifyUser } from "@/lib/dal";
 import { deleteSession } from "@/lib/session";
-import { selectUser } from "@/lib/userFunctions";
 import { redirect } from "next/navigation";
 
 async function Nav() {
@@ -13,51 +12,27 @@ async function Nav() {
   }
   const auth = await verifyUser();
 
-  const username = auth.user;
+  const { email, username } = auth;
 
-  if (username) {
-    const { data } = await selectUser(username);
-    const newUser = data.username;
-    return (
-      <>
-        <nav className={"navBar"}>
-          {" "}
-          <div className="logoContainer">
-            <a href="/">
-              <img
-                className="logo"
-                src={"/images/logoIcon.png"}
-                alt="Lyricly logo"
-              />
-            </a>
-          </div>{" "}
-          <NavCon username={newUser}>
-            <User username={newUser} action={logout} />
-          </NavCon>
-        </nav>
-      </>
-    );
-  } else {
-    return (
-      <>
-        <nav className={"navBar"}>
-          {" "}
-          <div className="logoContainer">
-            <a href="/">
-              <img
-                className="logo"
-                src={"/images/logoIcon.png"}
-                alt="Lyricly logo"
-              />
-            </a>
-          </div>{" "}
-          <NavCon username={null}>
-            <User username={null} action={logout} />
-          </NavCon>
-        </nav>
-      </>
-    );
-  }
+  return (
+    <>
+      <nav className={"navBar"}>
+        {" "}
+        <div className="logoContainer">
+          <a href="/">
+            <img
+              className="logo"
+              src={"/images/logoIcon.png"}
+              alt="Lyricly logo"
+            />
+          </a>
+        </div>{" "}
+        <NavCon username={username ? username : null}>
+          <User username={username ? username : null} action={logout} />
+        </NavCon>
+      </nav>
+    </>
+  );
 }
 
 export default Nav;

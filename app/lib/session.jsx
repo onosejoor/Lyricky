@@ -24,9 +24,9 @@ export async function decode(session) {
   }
 }
 
-export async function createSession(username, time) {
+export async function createSession(email,username, time) {
   const date = time || new Date(Date.now() + 7 * 24 * 60 * 60 * 1000);
-  const session = await encrypt({ username, date });
+  const session = await encrypt({ email,username, date });
 
   cookies().set("session", session, {
     httpOnly: true,

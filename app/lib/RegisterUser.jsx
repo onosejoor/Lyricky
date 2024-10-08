@@ -2,7 +2,7 @@
 
 import bcrypt from "bcrypt";
 import { selectUser, selectUserName } from "./userFunctions";
-import { createSession} from "./session";
+import { createSession } from "./session";
 import { supabase } from "./db";
 
 export default async function registerUser(formData) {
@@ -32,9 +32,14 @@ export default async function registerUser(formData) {
       email: email,
       password: hash,
       username: username,
-    })
+    });
+    const { username } = checkRegUser.data;
 
-    await createSession(email);
-    return { success: true, message: "Registration Successful", redirect: true};
+    await createSession(email, username);
+    return {
+      success: true,
+      message: "Registration Successful",
+      redirect: true,
+    };
   }
 }
