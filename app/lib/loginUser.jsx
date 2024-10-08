@@ -38,10 +38,11 @@ export default async function loginUser(formData) {
 
       // 
       const hash = await bcrypt.compare(password, dbEmail);
-      const { email,username } = checkRegUser.data;
+
+      const { email : userEmail,username } = checkRegUser.data;
 
       if (hash) {
-        await createSession(email, username);
+        await createSession(userEmail, username);
         return {
           success: true,
           message: "Logged In Succesfully",
@@ -52,7 +53,6 @@ export default async function loginUser(formData) {
       }
     }
   } catch (error) {
-    // console.log(error, "keje");
 
     return { success: false, message: error.message };
   }
