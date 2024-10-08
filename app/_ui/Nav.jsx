@@ -5,9 +5,7 @@ import { deleteSession } from "@/lib/session";
 import { selectUser } from "@/lib/userFunctions";
 import { redirect } from "next/navigation";
 
-
 async function Nav() {
-
   async function logout() {
     "use server";
     await deleteSession();
@@ -15,9 +13,11 @@ async function Nav() {
   }
   const auth = await verifyUser();
 
-  const username = auth.user;
+  const  user = auth.user;
 
-  const {email} = await selectUser(username)
+  const { data, error } = await selectUser(user);
+  const { username } = data;
+
   return (
     <>
       <nav className={"navBar"}>
@@ -31,8 +31,8 @@ async function Nav() {
             />
           </a>
         </div>{" "}
-        <NavCon username={email ? email : null}>
-          <User username={email  ? email : null} action={logout }/>
+        <NavCon username={username ? username : null}>
+          <User username={username ? username : null} action={logout} />
         </NavCon>
       </nav>
     </>
