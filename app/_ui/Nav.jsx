@@ -12,7 +12,7 @@ async function Nav() {
   }
   const auth = await verifyUser();
 
-  const { email, username } = auth;
+  const { username } = auth;
 
   return (
     <>

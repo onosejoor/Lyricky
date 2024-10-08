@@ -15,19 +15,16 @@ const Recent = async () => {
 
   if (username.error) {
     console.log(username.error);
-    
+
     return (
       <>
-      <div className="nothingYet">
-      <Img src={"/images/svg/error.svg"} alt={"nothing here yet Image"} />  
-      <h4>Error, Check Internet Connection</h4>
-      </div>
-
+        <div className="nothingYet">
+          <Img src={"/images/svg/error.svg"} alt={"nothing here yet Image"} />
+          <h4>Error, Check Internet Connection</h4>
+        </div>
       </>
- 
     );
   }
-
 
   const { data, error } = await selectLyrics(user);
 
@@ -45,22 +42,21 @@ const Recent = async () => {
 
   return (
     <>
-
-        {error ? (
-          <h2>Error Fetching Lyrics</h2>
-        ) : data.length ? (
-          <div className="recentCard">{data.map(mapper)}</div>
-        ) : (
-          <>
-            <div className="nothingYet">
-              <Img
-                src={"/images/svg/not found.svg"}
-                alt={"nothing here yet Image"}
-              />
-              <h4>No lyrics yet</h4>
-            </div>
-          </>
-        )}
+      {error ? (
+        <h2>Error Fetching Lyrics</h2>
+      ) : data.length ? (
+        <div className="recentCard">{data.map(mapper)}</div>
+      ) : (
+        <>
+          <div className="nothingYet">
+            <Img
+              src={"/images/svg/not found.svg"}
+              alt={"nothing here yet Image"}
+            />
+            <h4>No lyrics yet</h4>
+          </div>
+        </>
+      )}
     </>
   );
 };

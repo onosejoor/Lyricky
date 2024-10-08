@@ -65,11 +65,10 @@ export async function selectLyrics(email) {
 
 export async function selectLyricsById(id, username) {
   try {
-    const { data: user } = await selectUserName(username);
     const { data, error } = await supabase
       .from("lyrics")
       .select("*")
-      .eq("user_email, $1", [user.email])
+      .eq("user_email, $1", [username])
       .or(`id.eq.${id}`);
 
     if (error) {

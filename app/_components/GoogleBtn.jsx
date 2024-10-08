@@ -16,6 +16,9 @@ const GoogleBtn = () => {
         onClick={() => {
           setLoading(true);
           handleClick();
+          setTimeout(() => {
+            setLoading(false);
+          }, 20000);
         }}
       >
         <span>

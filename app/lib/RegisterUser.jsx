@@ -33,7 +33,6 @@ export default async function registerUser(formData) {
       password: hash,
       username: username,
     });
-    const { username } = checkRegUser.data;
 
     await createSession(email, username);
     return {

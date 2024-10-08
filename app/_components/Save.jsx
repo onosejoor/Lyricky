@@ -7,7 +7,7 @@ import { useRouter } from "next/navigation";
 const Save = ({ lyrics, artist, title }) => {
   const [loading, setloading] = useState(false);
   const [saved, setSaved] = useState(false);
-  const router = useRouter()
+  const router = useRouter();
 
   async function click() {
     const insertLyrics = await insert(artist, title, lyrics);
@@ -17,10 +17,12 @@ const Save = ({ lyrics, artist, title }) => {
     } else {
       setloading(false);
       setSaved(true);
-      setTimeout(()=>{setSaved(false)},1000)
+      setTimeout(() => {
+        setSaved(false);
+      }, 1000);
       toast.success(insertLyrics.message);
 
-      router.refresh()
+      router.refresh();
     }
   }
   return (
@@ -29,7 +31,7 @@ const Save = ({ lyrics, artist, title }) => {
         {" "}
         {!saved ? (
           loading ? (
-            <Loader style={{ height: "30px", width: "30px"}} />
+            <Loader style={{ height: "30px", width: "30px" }} />
           ) : (
             <>
               <svg
@@ -60,35 +62,34 @@ const Save = ({ lyrics, artist, title }) => {
               </svg>
             </>
           )
-        ) : <svg
-        viewBox="0 0 24 24"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
-        <g
-          id="SVGRepo_tracerCarrier"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        ></g>
-        <g id="SVGRepo_iconCarrier">
-          {" "}
-          <title></title>{" "}
-          <g id="Complete">
-            {" "}
-            <g id="tick">
+        ) : (
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
+            <g
+              id="SVGRepo_tracerCarrier"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            ></g>
+            <g id="SVGRepo_iconCarrier">
               {" "}
-              <polyline
-                fill="none"
-                points="3.7 14.3 9.6 19 20.3 5"
-                stroke="purple"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2.4"
-              ></polyline>{" "}
-            </g>{" "}
-          </g>{" "}
-        </g>
-      </svg>}
+              <title></title>{" "}
+              <g id="Complete">
+                {" "}
+                <g id="tick">
+                  {" "}
+                  <polyline
+                    fill="none"
+                    points="3.7 14.3 9.6 19 20.3 5"
+                    stroke="purple"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2.4"
+                  ></polyline>{" "}
+                </g>{" "}
+              </g>{" "}
+            </g>
+          </svg>
+        )}
         <div className="saveText">Save Lyric</div>
       </div>
     </>
