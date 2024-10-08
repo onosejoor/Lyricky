@@ -1,25 +1,16 @@
 "use server";
 import axios from "axios";
-import {selectUserName } from "./userFunctions";
 import { verifyUser } from "./dal";
 
 export async function serve(formData) {
   try {
     const auth = await verifyUser();
 
-    const username = auth.user;
     if (!auth.IsAuth) {
       return { success: false, error: "User Not Signed In" };
     }
-
-    const select = await selectUserName(username);
-
-    if (select.error) {
-      return { success: false, error: "Error Fetching Lyrics. Try Checking Internet Connection" };
-    }
-
     const form = await formData;
-    
+
     const request = await axios.get(
       `https://lyrist.vercel.app/api/${form.get("song")}/${form.get("artist")}`,
       {
@@ -37,7 +28,10 @@ export async function serve(formData) {
 
     return { success: true, data: response };
   } catch (error) {
-    return { success: false, error: error.message};
+    return {
+      success: false,
+      error: "Error Fetching Lyrics. Try Checking Internet Connection",
+    };
   }
 }
 
