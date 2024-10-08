@@ -13,30 +13,51 @@ async function Nav() {
   }
   const auth = await verifyUser();
 
-  const  user = auth.user;
+  const username = auth.user;
 
-  const { data, error } = await selectUser(user);
-  const { username } = data;
-
-  return (
-    <>
-      <nav className={"navBar"}>
-        {" "}
-        <div className="logoContainer">
-          <a href="/">
-            <img
-              className="logo"
-              src={"/images/logoIcon.png"}
-              alt="Lyricly logo"
-            />
-          </a>
-        </div>{" "}
-        <NavCon username={username ? username : null}>
-          <User username={username ? username : null} action={logout} />
-        </NavCon>
-      </nav>
-    </>
-  );
+  if (username) {
+    const { data } = await selectUser(username);
+    const newUser = data.username;
+    return (
+      <>
+        <nav className={"navBar"}>
+          {" "}
+          <div className="logoContainer">
+            <a href="/">
+              <img
+                className="logo"
+                src={"/images/logoIcon.png"}
+                alt="Lyricly logo"
+              />
+            </a>
+          </div>{" "}
+          <NavCon username={newUser}>
+            <User username={newUser} action={logout} />
+          </NavCon>
+        </nav>
+      </>
+    );
+  } else {
+    return (
+      <>
+        <nav className={"navBar"}>
+          {" "}
+          <div className="logoContainer">
+            <a href="/">
+              <img
+                className="logo"
+                src={"/images/logoIcon.png"}
+                alt="Lyricly logo"
+              />
+            </a>
+          </div>{" "}
+          <NavCon username={null}>
+            <User username={null} action={logout} />
+          </NavCon>
+        </nav>
+      </>
+    );
+  }
 }
 
 export default Nav;

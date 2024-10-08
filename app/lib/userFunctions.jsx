@@ -65,7 +65,7 @@ export async function selectLyrics(email) {
 
 export async function selectLyricsById(id, username) {
   try {
-    const { data: user } = await selectUser(username);
+    const { data: user } = await selectUserName(username);
     const { data, error } = await supabase
       .from("lyrics")
       .select("*")
@@ -114,14 +114,13 @@ export async function deleteLyrics(id) {
 // Second insert
 export async function insert(artist, title, lyrics) {
   const request = await verifyUser();
-
   if (!request.IsAuth) {
     return { success: false, message: "User Not Signed In" };
-  } else {
-    const { user } = request;
-
-    await insertLyrics(user, artist, title, lyrics);
-
-    return { success: true, message: "Inserted Successfully" };
   }
+
+  const { user } = request;
+
+  await insertLyrics(user, artist, title, lyrics);
+
+  return { success: true, message: "Inserted Successfully" };
 }

@@ -18,7 +18,9 @@ export const authOptions = {
         if (user && email_verified) {
           const select = await selectUser(user.email);
           if (select.data) {
-            await createSession(user.email);
+            const { email } = select.data;
+
+            await createSession(email);
 
             return true;
           } else {
@@ -33,7 +35,7 @@ export const authOptions = {
             return true;
           }
         }
-      } catch (error) {
+      } catch (error) {        
         return false;
       }
     },

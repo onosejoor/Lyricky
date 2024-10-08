@@ -1,7 +1,7 @@
 "use server";
 
 import bcrypt from "bcrypt";
-import { selectUser } from "./userFunctions";
+import { selectUser, selectUserName } from "./userFunctions";
 import { createSession} from "./session";
 import { supabase } from "./db";
 
@@ -12,8 +12,9 @@ export default async function registerUser(formData) {
   const saltRounds = 10;
 
   const checkRegUser = await selectUser(email);
+  const checkUserName = await selectUserName(username);
 
-  if (checkRegUser.error) {
+  if (checkRegUser.error || checkUserName.error) {
     return {
       success: false,
       message: "Error Validating User. Check Internet Connection",

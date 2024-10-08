@@ -3,7 +3,7 @@
 import Img from "@/_components/Img";
 import RecentCard from "@/_components/RecentCard";
 import { verifyUser } from "@/lib/dal";
-import { selectLyrics } from "@/lib/userFunctions";
+import { selectLyrics, selectUser } from "@/lib/userFunctions";
 
 const Recent = async () => {
   // Check user authenticity
@@ -11,8 +11,10 @@ const Recent = async () => {
   const { user } = verify;
 
   // select user creds from username
+  const username = await selectUser(user);
 
-  if (!user) {
+  if (username.error) {
+    console.log(username.error);
     
     return (
       <>
@@ -22,7 +24,6 @@ const Recent = async () => {
       </div>
 
       </>
-
  
     );
   }
