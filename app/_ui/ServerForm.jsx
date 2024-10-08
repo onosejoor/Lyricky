@@ -99,7 +99,12 @@ export default function ServerComponent() {
           <form action={set} className="lyricForm">
             <div>
               {" "}
-              <label htmlFor="Song">Song Title</label>
+              <label htmlFor="Song">
+                Song Title{" "}
+                <span style={{ opacity: ".83", fontSize: "smaller" }}>
+                  (required)
+                </span>
+              </label>
               <input
                 style={{ borderColor: error.song ? "red" : "initial" }}
                 name="song"

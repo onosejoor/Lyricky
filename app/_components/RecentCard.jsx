@@ -6,7 +6,6 @@ import Loader from "./loader";
 import LoadBtn from "./LoadBtn";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
-import Link from "next/link";
 
 export default function RecentCard({ lyrics, artist, title, id }) {
   const [loading, setLoading] = useState(false);
@@ -19,7 +18,6 @@ export default function RecentCard({ lyrics, artist, title, id }) {
     toast.success("Deleted Successfully");
     router.refresh();
   }
-   const encode = btoa(id)
 
   return (
     <>
@@ -33,11 +31,9 @@ export default function RecentCard({ lyrics, artist, title, id }) {
 
         <div className={"recentLyrics"}>
           {lyrics.slice(0, 150) + "..."}
-          <Link href={`/details?id=${encode}`} >
-          <button className="see" >
+          <button className="see" onClick={()=>{router.push(`lyrics/details?id=${id}`)}}>
             {"see-more" }
           </button> 
-          </Link>
 
         </div>
         <div className="lyricDetail">

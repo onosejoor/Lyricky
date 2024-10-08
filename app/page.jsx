@@ -14,14 +14,14 @@ const Page = () => {
           src={"/images/about/search.svg"}
           class3={"aboutImgWidth"}
           text={
-            "At Lyricky, we’re all about connecting you with the soul of a song. Simply tell us the artist’s name and the title of the track, and we’ll weave the lyrics into your fingertips. Whether you’re belting it out in the shower or decoding the hidden meanings, Lyricky has your back. Because life’s too short to hum half-hearted choruses."
+            "At Lyricky, we’re all about connecting you with the soul of a song. Simply tell us the artist’s name(optional) and the title of the track, and we’ll get the lyrics for in an a snap. Lyricky has your back, Because life’s too short to hum hearted choruses."
           }
         />
         <About
           headText={"Lyrics Storage"}
           src={"/images/about/storage.svg"}
           text={
-            "At Lyricky, we understand that lyrics aren’t just words, they’re memories etched in melodies. Our Lyrics Storage Services allow you to securely archive those precious verses you’ve already fetched. Whether you’re a songwriter fine-tuning your own creations or a music enthusiast curating playlists, Lyricky’s virtual shelves await."
+            "Our Lyrics Storage Services allow you to securely save those precious lyrics you’ve already fetched. With our vast storage capacities, we provide a better source of saving your lyrics to avoid any loss."
           }
         />
         <About
@@ -29,7 +29,7 @@ const Page = () => {
           class2={"aboutReverse"}
           src={"/images/about/authentication.svg"}
           text={
-            "At Lyricky, we take lyrics seriously. Our mission? To protect your fetched lyrics from unauthorized access. Whether you’re a budding listener or a lyric reader, Lyricky ensures that your song lyrics remain secure. With our robust authentication measures, your verses are shielded"
+            "At Lyricky, we take lyrics seriously. Our mission? To protect your fetched lyrics from unauthorized access. Only users signed in can edit, save and fetch lyrics. With our robust authentication measures, your verses are shielded"
           }
         />
       </section>

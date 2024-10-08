@@ -17,11 +17,6 @@ const Form = ({
   const [loading, setLoading] = useState(false);
   const router = useRouter();
 
-  function checkInput(e) {
-    console.log(e.target);
-    
-  }
-
   const load = async (e) => {
     e.preventDefault();
     setLoading(true);

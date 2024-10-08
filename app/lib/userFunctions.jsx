@@ -33,7 +33,7 @@ export async function selectUserName(username) {
       .eq("username, $1", [username]);
 
     if (error) {
-      return { error: error.message+"psojsoj" };
+      return { error: error.message + "psojsoj" };
     } else {
       const [user] = data;
       return { data: user };
@@ -63,12 +63,14 @@ export async function selectLyrics(email) {
   }
 }
 
-export async function selectLyricsById(id) {
+export async function selectLyricsById(id, username) {
   try {
+    const { data: user } = await selectUserName(username);
     const { data, error } = await supabase
       .from("lyrics")
       .select("*")
-      .eq("id, $1", [id]);
+      .eq("user_email, $1", [user.email])
+      .or(`id.eq.${id}`)      
 
     if (error) {
       return { error: error.message };
@@ -81,8 +83,7 @@ export async function selectLyricsById(id) {
   }
 }
 
-
-// insert lyrics into db 
+// insert lyrics into db
 export async function insertLyrics(email, artist, title, lyrics) {
   try {
     const { data, error } = await supabase.from("lyrics").insert({
@@ -121,10 +122,10 @@ export async function insert(artist, title, lyrics) {
   const email = await selectUserName(user);
   if (email.error) {
     return { success: false, message: email.error };
-  } else{
-      const { data } = email;
-  await insertLyrics(data.email, artist, title, lyrics);
-  
-  return { success: true, message: "Inserted Successfully" };
+  } else {
+    const { data } = email;
+    await insertLyrics(data.email, artist, title, lyrics);
+
+    return { success: true, message: "Inserted Successfully" };
   }
 }

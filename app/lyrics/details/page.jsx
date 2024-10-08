@@ -8,11 +8,11 @@ import NotFound from "@/not-found";
 export default async function Page({ searchParams }) {
   const verify = await verifyUser();
   if (verify.IsAuth) {
-    const pId = searchParams.id;
-    const paramsId = parseInt(atob(pId)) ;
+    const id = parseInt(searchParams.id) ;
+    
 
-    if (paramsId) {
-      const { error, data } = await selectLyricsById(paramsId);
+    if (id) {
+      const { error, data } = await selectLyricsById(id,  verify.user);
       if (error) {
         return <FormError error={error} />;
       }

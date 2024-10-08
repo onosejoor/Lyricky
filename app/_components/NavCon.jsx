@@ -126,7 +126,7 @@ const NavCon = ({ children, username }) => {
               click={showed ? shut : null}
               class1={`nav ${path === "/" && "active"}`}
               text="Home"
-              link="/"
+              link="//"
             />
             {!username && (
               <>
@@ -136,14 +136,14 @@ const NavCon = ({ children, username }) => {
                   class1={`nav ${path === "/signup" && "active"}`}
                   class2="nav-link"
                   text="sign-Up"
-                  link="signup"
+                  link="/signup"
                 />
                 <Lists
                   click={showed ? shut : null}
                   class1={`nav ${path === "/login" && "active"}`}
                   class2="nav-link"
                   text="Login"
-                  link="login"
+                  link="/login"
                 />
               </>
             )}
@@ -153,7 +153,7 @@ const NavCon = ({ children, username }) => {
               class1={`nav ${path === "/lyrics" && "active"}`}
               class2="nav-link"
               text="lyrics"
-              link="lyrics"
+              link="/lyrics"
             />
           </>
         </ul>
