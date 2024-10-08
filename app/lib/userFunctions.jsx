@@ -70,7 +70,7 @@ export async function selectLyricsById(id, username) {
       .from("lyrics")
       .select("*")
       .eq("user_email, $1", [user.email])
-      .or(`id.eq.${id}`)      
+      .or(`id.eq.${id}`);
 
     if (error) {
       return { error: error.message };
@@ -114,17 +114,13 @@ export async function deleteLyrics(id) {
 // Second insert
 export async function insert(artist, title, lyrics) {
   const request = await verifyUser();
+
   if (!request.IsAuth) {
     return { success: false, message: "User Not Signed In" };
-  }
-
-  const { user } = request;
-  const email = await selectUserName(user);
-  if (email.error) {
-    return { success: false, message: email.error };
   } else {
-    const { data } = email;
-    await insertLyrics(data.email, artist, title, lyrics);
+    const { user } = request;
+
+    await insertLyrics(user, artist, title, lyrics);
 
     return { success: true, message: "Inserted Successfully" };
   }

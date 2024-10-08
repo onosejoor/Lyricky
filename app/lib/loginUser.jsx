@@ -38,10 +38,10 @@ export default async function loginUser(formData) {
 
       // 
       const hash = await bcrypt.compare(password, dbEmail);
-      const { username } = checkRegUser.data;
+      const { email : userEmail } = checkRegUser.data;
 
       if (hash) {
-        await createSession(username);
+        await createSession(userEmail);
         return {
           success: true,
           message: "Logged In Succesfully",

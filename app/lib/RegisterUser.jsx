@@ -1,7 +1,7 @@
 "use server";
 
 import bcrypt from "bcrypt";
-import { selectUser, selectUserName } from "./userFunctions";
+import { selectUser } from "./userFunctions";
 import { createSession} from "./session";
 import { supabase } from "./db";
 
@@ -12,9 +12,8 @@ export default async function registerUser(formData) {
   const saltRounds = 10;
 
   const checkRegUser = await selectUser(email);
-  const checkUserName = await selectUserName(username);
 
-  if (checkRegUser.error || checkUserName.error) {
+  if (checkRegUser.error) {
     return {
       success: false,
       message: "Error Validating User. Check Internet Connection",
@@ -34,7 +33,7 @@ export default async function registerUser(formData) {
       username: username,
     })
 
-    await createSession(username);
+    await createSession(email);
     return { success: true, message: "Registration Successful", redirect: true};
   }
 }

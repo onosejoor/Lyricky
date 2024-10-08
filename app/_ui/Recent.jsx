@@ -1,10 +1,9 @@
 "use server";
 
-import FormError from "@/_components/FormError";
 import Img from "@/_components/Img";
 import RecentCard from "@/_components/RecentCard";
 import { verifyUser } from "@/lib/dal";
-import { selectLyrics, selectUserName } from "@/lib/userFunctions";
+import { selectLyrics } from "@/lib/userFunctions";
 
 const Recent = async () => {
   // Check user authenticity
@@ -12,10 +11,8 @@ const Recent = async () => {
   const { user } = verify;
 
   // select user creds from username
-  const username = await selectUserName(user);
 
-  if (username.error) {
-    console.log(username.error);
+  if (!user) {
     
     return (
       <>
@@ -30,9 +27,8 @@ const Recent = async () => {
     );
   }
 
-  const { email } = username.data;
 
-  const { data, error } = await selectLyrics(email);
+  const { data, error } = await selectLyrics(user);
 
   function mapper({ lyrics, artist, title, id }) {
     return (
