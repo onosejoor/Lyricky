@@ -7,7 +7,7 @@ const About = ({ headText, text, link, buttonText, src, class2, class3 }) => {
       {" "}
       <div className={class2 ? "aboutContainer  " + class2 : "aboutContainer"}>
         <div className={"textWrapper"}>
-          <h1 className="aboutH1">{headText}</h1>
+          <h2 className="aboutH1">{headText}</h2>
           <p className="aboutSmall">{text}</p>
 
           {buttonText && <Button text={buttonText} link={link} />}

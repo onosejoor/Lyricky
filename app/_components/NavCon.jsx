@@ -85,7 +85,7 @@ const NavCon = ({ children, username }) => {
             </svg>
           </>
         ) : (
-          <img onClick={set} className="theme" src="/images/theme/dark.svg" />
+          <img onClick={set} className="theme" src="/images/theme/dark.svg" alt="dark mode image"/>
         )}
         </div>
         

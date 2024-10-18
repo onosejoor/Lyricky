@@ -4,8 +4,9 @@ import Footer from "./_ui/Footer";
 import { Toaster } from "react-hot-toast";
 
 export const metadata = {
-  title: "Lyricky",
+  title: "Lyricky | Lyrics Finder",
   description: "Are you humming a tune but can’t quite remember the lyrics? Fear not! Lyricky is your trusty sidekick in the lyrical labyrinth. Get the lyrics of your song in a snap!",
+keywords: "lyrics music lyrics-finder"
 };
 
 export default function RootLayout({ children }) {
