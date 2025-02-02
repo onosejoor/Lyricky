@@ -88,7 +88,7 @@ export default function Form() {
       <div className="grid grid-cols-1 md:grid-cols-2 divide-x dark:divide-purple-500 dark:border-white divide-purple my-2 w-[90%] mx-auto rounded-lg gap-2.5 border border-purple rounded-b-md overflow-hidden h-[700px] md:h-[350px]">
         <form action={handleSubmit} className="flex flex-col gap-2.5 p-5">
           <div className="grid gap-1.5 mb-2.5 ">
-            <label htmlFor="Song" className="text-base text-white font-medium">
+            <label htmlFor="Song" className="text-base dark:text-white font-medium">
               Song Title
             </label>
             <input
@@ -100,7 +100,7 @@ export default function Form() {
             />
           </div>
           <div className="grid gap-1.5 mb-2.5 ">
-            <label htmlFor="Name" className="text-base text-white font-medium">
+            <label htmlFor="Name" className="text-base dark:text-white font-medium">
               Artist Name
             </label>
             <input
