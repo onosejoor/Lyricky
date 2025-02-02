@@ -3,7 +3,7 @@ import type { MetadataRoute } from "next";
 export default function manifest(): MetadataRoute.Manifest {
   return {
     name: "Lyricky | Your Lyric Finder",
-    short_name: "Lricky",
+    short_name: "Lyricky",
     description: "A lyric finder application with authentication and storage",
     start_url: "/",
     display: "standalone",
