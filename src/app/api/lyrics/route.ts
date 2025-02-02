@@ -24,6 +24,8 @@ export async function GET(req: Request) {
       lyrics: userLyric,
     });
   } catch (error: any) {
+    console.log(error);
+    
     return NextResponse.json(
       {
         success: false,

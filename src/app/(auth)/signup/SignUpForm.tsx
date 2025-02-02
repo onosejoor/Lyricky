@@ -27,14 +27,14 @@ export default function SignUpForm() {
           message: response.message,
         });
         router.push("/lyrics");
+
+        return;
       } else {
         showToast({
-          variants: "success",
+          variants: "error",
           message: response.message,
         });
       }
-
-      return;
     } catch (error: any) {
       showToast({
         variants: "error",
@@ -123,13 +123,18 @@ export default function SignUpForm() {
                 register
               </button>
             </form>
-            <h3 className="font-medium text-purple my-5 mx-auto w-fit dark:text-white">OR</h3>
+            <h3 className="font-medium text-purple my-5 mx-auto w-fit dark:text-white">
+              OR
+            </h3>
             <GoogleBtn />
 
             <div className="flex gap-2 justify-center">
               <h5 className="font-medium">Already Have An Account?</h5>
-              <Link href={"/login"} className="text-purple dark:text-purple-500 font-bold">
-                 Log-In
+              <Link
+                href={"/login"}
+                className="text-purple dark:text-purple-500 font-bold"
+              >
+                Log-In
               </Link>
             </div>
           </div>
