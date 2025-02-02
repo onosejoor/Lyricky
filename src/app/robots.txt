@@ -1,0 +1,5 @@
+User-Agent: *
+Allow: /
+Disallow: /lyrics/, /settings/
+
+Sitemap: https://lyricky.vercel.app/sitemap.ts
