@@ -11,7 +11,19 @@ export const metadata: Metadata = {
   description:
     "Are you humming a tune but can’t quite remember the lyrics? Fear not! Lyricky is your trusty sidekick in the lyrical labyrinth. Get the lyrics of your song in a snap!",
   keywords: "lyrics music lyrics-finder auth finder storage lyrics ",
-  
+  openGraph: {
+    images: ["/logo.png"],
+    url: "https://lyricky.vercel.app",
+    description:
+      "A lyric finder application with authentication and storage. Are you humming a tune but can’t quite remember the lyrics? Fear not! Lyricky is your trusty sidekick in the lyrical labyrinth. Get the lyrics of your song in a snap!",
+    title: "Lyricky",
+    siteName: "Lyricky | Your Lyric Finder",
+    authors: "Onos Ejoor",
+  },
+  authors: {
+    name: "Onos Ejoor",
+    url: "https://github.com/onosejoor",
+  },
 };
 
 const roboto = Roboto({
