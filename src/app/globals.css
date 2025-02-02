@@ -1,0 +1,44 @@
+@import "tailwindcss";
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+@theme {
+  --color-black: #000000;
+  --color-purple: rgb(128, 0, 128);
+  --color-inputBtn: rgba(128, 0, 128, 0.785);
+  --shadow-nav: 0px 0px 3px 1px rgb(0, 0, 0, 0, 0.3);
+  --font-roboto: var(--font-roboto);
+  --font-poppins: var(--font-poppins);
+  --animate-slide: loader 1s linear infinite;
+
+  --breakpoint-xs: 450px;
+
+  @keyframes loader {
+    0% {
+      transform: translateX(-100%);
+    }
+    50% {
+      transform: translateX(0%);
+    }
+    100% {
+      transform: translateX(100%);
+    }
+  }
+}
+@utility hero-gradient {
+  background: linear-gradient(
+    to top,
+    #000000,
+    transparent 0%,
+    rgb(128, 0, 128, 0.2)
+  );
+}
+@layer base {
+  button {
+    @apply cursor-pointer;
+  }
+}
+@custom-variant dark (&:where(.dark, .dark *));
+
+::selection {
+  background-color: var(--color-purple);
+  color: white;
+}
