@@ -33,7 +33,7 @@ const Header = async () => {
             <Link href={"/lyrics"}>
               <button
                 type="button"
-                className="px-5 py-4 h-fit bg-purple/50 font-normal border-[1.5px] rounded-xl w-[150px] "
+                className="px-5 py-4 h-fit bg-purple/50 dark:border-white dark:text-white font-normal border-[1.5px] rounded-xl w-[150px] "
               >
                 Lyrics
               </button>
