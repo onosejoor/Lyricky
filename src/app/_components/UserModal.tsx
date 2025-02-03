@@ -64,7 +64,7 @@ const UserModal = ({ id }: { id: boolean }) => {
             </div>
             {see && (
               <div className="absolute grid justify-items-start border-[1.5px] border-purple top-[70px] after:absolute after:left-[70%] after:border-solid after:border-[transparent_transparent_var(--color-purple)_transparent] after:border-[10px] after:-top-5  z-[1]  right-[35px] gap-[15px] divide-y divide-purple items-center bg-white rounded-[10px]">
-                <h5 className="font-bold text-lg py-2 px-5">{user.username}</h5>
+                <h5 className="font-bold text-lg py-2 px-5 w-full">{user.username}</h5>
                 <Link
                   onClick={setOpen}
                   href={"/settings"}

@@ -2,13 +2,16 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { mutate } from "swr";
+import axios from "axios";
 
 import GoogleBtn from "@/app/_components/GoogleBtn";
 import Img from "@/components/Img";
 import { EyeClosedIcon, EyeOpenIcon } from "@/components/Icons";
-import axios from "axios";
+
 import { showToast } from "@/hooks/Toast";
-import { useRouter } from "next/navigation";
+
 
 export default function SignUpForm() {
   const [hide, setHide] = useState(false);
@@ -26,6 +29,8 @@ export default function SignUpForm() {
           variants: "success",
           message: response.message,
         });
+        mutate("/api/auth/user");
+
         router.push("/lyrics");
 
         return;

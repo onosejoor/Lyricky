@@ -39,10 +39,10 @@ export async function POST(reg: Request) {
       //
       const hash = await bcrypt.compare(password, dbEmail);
 
-      const { email: userEmail } = checkRegUser.data;
+      const { id } = checkRegUser.data;
 
       if (hash) {
-        await createSession(userEmail);
+        await createSession(id);
         return NextResponse.json({
           success: true,
           message: "Logged in succesfully",

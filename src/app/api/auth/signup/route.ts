@@ -41,7 +41,9 @@ export async function POST(req: Request) {
       });
       await newData.save();
 
-      await createSession(email);
+      const { data } = await selectUser(email);
+
+      await createSession(data?.id);
       return NextResponse.json(
         {
           success: true,

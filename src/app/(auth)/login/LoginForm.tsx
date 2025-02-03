@@ -10,6 +10,7 @@ import { showToast } from "@/hooks/Toast";
 
 import Img from "@/components/Img";
 import { EyeClosedIcon, EyeOpenIcon } from "@/components/Icons";
+import { mutate } from "swr";
 
 export default function LoginForm() {
   const [hide, setHide] = useState(false);
@@ -28,6 +29,7 @@ export default function LoginForm() {
           variants: "success",
           message: response.message,
         });
+        mutate("/api/auth/user")
         router.push("/lyrics");
 
         return;
