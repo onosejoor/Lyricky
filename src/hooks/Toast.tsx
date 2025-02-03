@@ -92,7 +92,7 @@ const Toast: React.FC = () => {
       <div
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
-        className={`fixed bottom-5 ${className} group -translate-x-1/2 left-1/2 z-[100] py-4 px-6 items-center sm:!w-fit w-[calc(100%-50px)] max-w-[500px] rounded-[12px] flex gap-2 ${
+        className={`fixed bottom-5 ${className} group -translate-x-1/2 left-1/2 z-[100] py-4 px-6 items-center sm:!w-fit w-[calc(100%-50px)] sm:!max-w-[500px] rounded-[12px] flex gap-2 ${
           toastVariant[variants!]
         }`}
       >
